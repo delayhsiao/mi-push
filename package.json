@@ -1,5 +1,14 @@
 {
   "name": "mi-push",
   "version": "0.0.1",
-  "main":"index"
+  "main":"lib/index",
+  "scripts": {
+    "test": "npm run eslint && npm run test-cov",
+    "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -t 50000 --recursive  -R spec test/",
+    "compile": "babel src/ --out-dir lib/",
+    "watch-compile": "npm run compile -- --watch",
+    "watch": "npm run watch-compile",
+    "prepublish": "npm run compile",
+    "eslint": "eslint src/"
+  }
 }
